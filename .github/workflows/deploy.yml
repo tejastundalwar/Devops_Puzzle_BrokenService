@@ -1,0 +1,21 @@
+name: Fix & Deploy
+
+on:
+  repository_dispatch:
+    types: [fix]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fix Bug
+        run: |
+          sed -i 's/ENV APP_STATUS=/ENV APP_STATUS=running/' Dockerfile
+
+      - name: Build
+        run: docker build -t puzzle .
+
+      - name: Done
+        run: echo "Service fixed and redeployed"
