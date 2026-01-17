@@ -1,0 +1,167 @@
+#🧩 Fix The Pipeline — DevOps Puzzle
+
+Break it. Debug it. Deploy it.
+A fun, interactive DevOps puzzle where you act like a real SRE: find the issue, trigger CI/CD, and bring the service back online.
+
+#🚀 What is This?
+
+Fix The Pipeline is a mini DevOps game + demo project:
+
+A service is intentionally broken
+
+You click Check Logs to see why
+
+You click Fix & Redeploy
+
+A real GitHub Actions CI/CD pipeline runs
+
+After deployment, the service becomes LIVE
+
+Built to show real-world DevOps flow in a fun, recruiter-friendly way.
+
+🧠 What It Demonstrates
+
+CI/CD with GitHub Actions
+
+Triggering pipelines from an application
+
+Secure secret handling with environment variables
+
+Docker-based workflow
+
+Cloud deployment (Railway)
+
+DevOps thinking, not just tools
+
+🕹️ How to Play (User Flow)
+
+Open the app link
+
+You will see:
+❌ Service is Down
+
+Click 🔍 Check Logs
+
+See why it failed
+
+Click 🚀 Fix & Redeploy
+
+Watch GitHub Actions run
+
+After deployment:
+✅ Service is LIVE!
+
+🛠 Tech Stack
+
+Backend: Node.js, Express
+
+Frontend: HTML, CSS, JavaScript (Gen-Z UI)
+
+CI/CD: GitHub Actions
+
+Containerization: Docker
+
+Cloud: Railway
+
+Secrets: Environment Variables
+
+⚙️ Local Setup
+1. Clone Repo
+git clone https://github.com/tejastundalwar/Devops_Puzzle_BrokenService.git
+cd Devops_Puzzle_BrokenService
+
+2. Install Dependencies
+npm install
+
+3. Create .env
+GITHUB_TOKEN=your_github_token_here
+
+
+Token must have:
+
+repo
+
+workflow
+
+4. Run App
+node server.js
+
+
+Open:
+
+http://localhost:3000
+
+🔁 CI/CD Flow
+
+Click Fix & Redeploy
+
+App sends event to GitHub:
+
+repository_dispatch: fix
+
+
+GitHub Actions:
+
+Fixes broken config
+
+Builds Docker image
+
+Deploys service
+
+App keeps checking status
+
+When service is live → UI updates
+
+☁️ Cloud Version
+
+This project is deployed on Railway:
+
+Uses process.env.PORT
+
+Secrets managed in Railway Variables
+
+Auto-deploys from GitHub
+
+📂 Project Structure
+.
+├── server.js
+├── package.json
+├── public/
+│   └── index.html   # Funky UI
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+└── .env (ignored)
+
+🎯 Why This Project Exists
+
+Not another CRUD app.
+Not another “Hello Docker”.
+
+This project shows:
+
+“I don’t just learn DevOps — I play with it, break it, and fix it like real systems.”
+
+Perfect for:
+
+Portfolio
+
+Resume
+
+Recruiter demo
+
+Interviews
+
+👨‍💻 Author
+
+Tejas Tundalwar
+DevOps & Cloud Enthusiast
+Building systems that don’t just run — they recover.
+
+⭐ Tip for Recruiters
+
+Click the button.
+Break the system.
+Watch it fix itself.
+
+That’s DevOps in action.
