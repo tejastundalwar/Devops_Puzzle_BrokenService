@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DevOps Puzzle</title>
+</head>
+<body>
+  <h1 id="status">❌ One service is down</h1>
+
+  <button onclick="checkLogs()">Check Logs</button>
+  <button onclick="fix()">Fix & Redeploy</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    let intervalId = null;
+
+    async function checkLogs(){
+      const r = await fetch("/logs");
+      const d = await r.json();
+      output.innerText = JSON.stringify(d, null, 2);
+    }
+
+    async function fix(){
+      const r = await fetch("/fix", { method: "POST" });
+      const d = await r.json();
+      output.innerText = JSON.stringify(d, null, 2);
+      status.innerText = "⏳ Redeploying...";
+      startChecking();
+    }
+
+    function startChecking(){
+      if(intervalId) clearInterval(intervalId);
+
+      intervalId = setInterval(async ()=>{
+        try{
+          const r = await fetch("/");
+          if(r.ok){
+            const text = await r.text();
+            if(text.includes("Service Running")){
+              status.innerText = "✅ Service is up";
+              clearInterval(intervalId);
+            }
+          }
+        }catch(e){
+          // still down, ignore
+        }
+      }, 5000); // every 5 seconds
+    }
+  </script>
+</body>
+</html>

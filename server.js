@@ -1,8 +1,8 @@
+require("dotenv").config();
 const express = require("express");
-const fetch = require("node-fetch");
-
 const app = express();
 app.use(express.json());
+app.use(express.static("public"));
 
 app.get("/", (req,res)=>{
   if(!process.env.APP_STATUS){
@@ -42,3 +42,8 @@ app.post("/fix", async (req,res)=>{
 });
 
 app.listen(3000,()=>console.log("Running"));
+
+console.log("Token loaded:", !!process.env.GITHUB_TOKEN);
+
+
+//curl -X POST http://localhost:3000/fix   --- Used to trigger the Github Actions
